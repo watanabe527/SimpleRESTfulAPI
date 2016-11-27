@@ -6,9 +6,10 @@ from resources.item import Item, ItemList
 from resources.user import UserRegister
 from resources.store import Store, StoreList
 from security import authenticate, identity
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.secret_key = 'yutaka'
